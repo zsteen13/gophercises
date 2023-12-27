@@ -23,8 +23,7 @@ func main() {
 	reader := csv.NewReader(file)
 
 	// Read the CSV data
-	p := 0
-	c := 0
+	p, c := 0, 0
 	for {
 		record, err := reader.Read()
 		if err != nil {
@@ -44,8 +43,8 @@ func main() {
 
 		// Put record into QAPair object, increment problem number
 		qa := QAPair{
-			Question:	record[0],
-			Answer: 	record[1],
+			Question: record[0],
+			Answer:   record[1],
 		}
 		p += 1
 
@@ -60,5 +59,6 @@ func main() {
 		}
 	}
 
+	// Print final score
 	fmt.Printf("You scored %d out of %d.\n", c, p)
 }
